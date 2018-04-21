@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns:th="http://www.thymeleaf.org"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/layout-padrao}">
+	
+	<head>
+		<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/lista-vinhos.css}" />
+	</head>
+
+	<body>
+		<section class="aw-layout-content  js-content" layout:fragment="conteudo">
+			<div class="page-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-8">
+							<h1>
+								Lista supermercados
+							</h1>
+						</div>
+		
+						<div class="col-xs-4">
+							<div class="aw-page-header-controls">
+								<a class="btn btn-primary" th:href="@{/supermercados/novo}">
+									<i class="fa fa-plus-square"></i>
+		
+									<span class="hidden-xs hidden-sm">Cadastro supermercados</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="container-fluid">
+			
+				<div class="alert  alert-success" th:if="${!#strings.isEmpty(messageSuccess)}">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button> 
+				
+				<div>
+					<i class="fa fa-check-circle"></i>	
+					<span th:text="${messageSuccess}"></span>
+				</div>
+				
+			</div>
+		
+				<div class="table-responsive">
+					<table id="tabela-produtos" class="table  table-striped  table-bordered  table-hover  table-condensed  js-sticky-table">
+						<thead class="aw-table-header-solid">
+							<tr>
+								<th class="av-table-vinhos-col-codigo">Código</th>
+								<th>Nome</th>
+								<th>Localização</th>
+								<th>Endereço</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="supermercado : ${supermercados}">
+								<td class="text-center" th:text="${supermercado.idSupermercado}"></td>
+		
+								<td>
+									<a th:href="@{/supermercados/editar/{id}(id=${supermercado.idSupermercado})}" th:text="${supermercado.nome}"></a>
+								</td>
+		
+								<td th:text="${supermercado.localizacao}"></td>
+		
+								<td class="text-left" th:text="${supermercado.endereco}"></td>
+		
+								<td class="text-center">
+									<form method="POST" th:action="@{/supermercados/remover/{id}(id=${supermercado.idSupermercado})}" th:onsubmit="'return confirm(\'Deseja remover ' + ${supermercado.nome} + '?\');'" >
+										<input type="hidden" name="_method" value="DELETE">
+										<button type="submit" class="btn btn-danger btn-xs">
+											<span class="fa fa-trash"></span>
+										</button>
+									</form>
+								</td>
+							</tr>
+		
+							<tr th:if="${supermercados.empty}">
+								<td colspan="5">Nenhum supermercado cadastrado</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>

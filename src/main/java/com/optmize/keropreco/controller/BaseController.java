@@ -7,7 +7,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BaseController {
+public abstract class BaseController {
 	
 	@Autowired
 	private Environment environment;

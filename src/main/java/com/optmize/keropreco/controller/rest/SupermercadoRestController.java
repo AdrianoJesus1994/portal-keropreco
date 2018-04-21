@@ -16,34 +16,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.optmize.keropreco.common.constants.Constantes;
 import com.optmize.keropreco.controller.BaseController;
-import com.optmize.keropreco.model.entity.Vinho;
-import com.optmize.keropreco.model.service.VinhosService;
+import com.optmize.keropreco.model.entity.Supermercado;
+import com.optmize.keropreco.model.service.SupermercadosService;
 
 @RestController
-@RequestMapping(Constantes.BASE_API_URL + "vinhos")
-public class VinhosRestController extends BaseController {
-	
-	@Autowired
-	private VinhosService service;
-	
+@RequestMapping(Constantes.BASE_API_URL + "supermercados")
+public class SupermercadoRestController extends BaseController {
 
+	@Autowired
+	private SupermercadosService service;
+	
 	@GetMapping
-	public List<Vinho> listar() {
+	public List<Supermercado> listar() {
 		return getService().listarTodos();
 	}
 	
 	@PostMapping
-	public Vinho salvar(@RequestBody Vinho vinho) {
-		return getService().salvar(vinho);
+	public Supermercado salvar(@RequestBody Supermercado Supermercado) {
+		return getService().salvar(Supermercado);
 	}
 	
 	@PutMapping
-	public ResponseEntity<Vinho> alterar(@RequestBody Vinho vinho) {
-		Vinho retorno = getService().editar(vinho);
+	public ResponseEntity<Supermercado> alterar(@RequestBody Supermercado Supermercado) {
+		Supermercado retorno = getService().editar(Supermercado);
 		if(retorno == null) {
-			return new ResponseEntity<Vinho>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Supermercado>(HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Vinho>(retorno, HttpStatus.OK);
+		return new ResponseEntity<Supermercado>(retorno, HttpStatus.OK);
 	}
 	 
 	@DeleteMapping("{id}")
@@ -51,7 +50,7 @@ public class VinhosRestController extends BaseController {
 		getService().remover(id);
 	}
 	
-	public VinhosService getService() {
+	public SupermercadosService getService() {
 		return service;
 	}
 	
