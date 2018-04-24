@@ -1,10 +1,16 @@
 package com.optmize.keropreco.model.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Usuario {
 	
 	private Long idUsuario;
 	private String nome;
+	
+	@NotBlank
 	private String login;
+	
+	@NotBlank
 	private String senha;
 	
 	public Usuario() {

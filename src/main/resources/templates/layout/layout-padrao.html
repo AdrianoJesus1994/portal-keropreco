@@ -37,7 +37,7 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand  hidden-xs" href="#">
-						<img alt="AlgaWorks" th:src="@{/layout/images/logo.png}" />
+						<img alt="Logo" th:src="@{/layout/images/rsz_keropreco.png}" class="img-fluid rounded"/>
 					</a>
 
 					<ul class="nav  navbar-nav">
@@ -78,6 +78,13 @@
 							<a th:href="@{/supermercados/listar}">
 								<i class="fa  fa-fw  fa-table"></i>
 								<span th:text="#{menu.LISTARSUPERMERCADOS}"></span>
+							</a>
+						</li>
+						
+						<li class="aw-menu__item">
+							<a th:href="@{/}">
+								<i class="fa  fa-fw  fa-table"></i>
+								<span th:text="#{menu.SAIR}"></span>
 							</a>
 						</li>
 					</ul>
