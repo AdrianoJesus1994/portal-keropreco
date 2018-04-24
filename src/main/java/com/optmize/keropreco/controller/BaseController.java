@@ -12,7 +12,7 @@ public abstract class BaseController {
 	@Autowired
 	private Environment environment;
 	
-	private Logger log = LoggerFactory.getLogger(this.getClass());
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public Environment getEnvironment() {
 		return environment;
@@ -22,6 +22,8 @@ public abstract class BaseController {
 		this.environment = environment;
 	}
 	
-
+	public Logger getLogger() {
+		return logger;
+	}
 	
 }

@@ -8,17 +8,16 @@ import org.springframework.stereotype.Service;
 
 import com.optmize.keropreco.common.constants.Constantes;
 import com.optmize.keropreco.model.entity.Supermercado;
-import com.optmize.keropreco.model.repository.interfaces.SupermercadosRepositoryInterface;
+import com.optmize.keropreco.model.repository.interfaces.SupermercadoRepositoryInterface;
 
 @Service
-public class SupermercadosService {
+public class SupermercadoService {
 	
 	@Autowired
-	@Qualifier(Constantes.AMBIENTE_REPOSTORY_ATUAL)
-	private SupermercadosRepositoryInterface repository;
+	private SupermercadoRepositoryInterface repository;
 	
 	
-	public Supermercado salvar(Supermercado supermercado) {
+	public Boolean salvar(Supermercado supermercado) {
 		return getRepository().salvar(supermercado);
 	}
 
@@ -30,11 +29,11 @@ public class SupermercadosService {
 		return getRepository().listarTodos();
 	}
 
-	public void remover(Long id) {
-		getRepository().remover(id);
+	public Boolean remover(Long id) {
+		return getRepository().remover(id);
 	}
 
-	public Supermercado editar(Supermercado supermercado) {
+	public Boolean editar(Supermercado supermercado) {
 		return getRepository().editar(supermercado);
 	}
 
@@ -42,7 +41,7 @@ public class SupermercadosService {
 		return getRepository().existe(id);
 	}
 	
-	public SupermercadosRepositoryInterface getRepository() {
+	public SupermercadoRepositoryInterface getRepository() {
 		return repository;
 	}
 }

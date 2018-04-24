@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.optmize.keropreco.model.entity.Vinho;
 
 @Component
-public interface VinhosRepositoryInterface {
+public interface VinhoRepositoryInterface {
 
 	public Vinho salvar(Vinho vinho);
 	

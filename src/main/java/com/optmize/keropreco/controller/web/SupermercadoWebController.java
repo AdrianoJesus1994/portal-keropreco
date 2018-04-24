@@ -17,14 +17,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.optmize.keropreco.model.entity.TipoVinho;
 import com.optmize.keropreco.common.constants.Constantes;
 import com.optmize.keropreco.model.entity.Supermercado;
-import com.optmize.keropreco.model.service.SupermercadosService;
+import com.optmize.keropreco.model.service.SupermercadoService;
 
 @Controller
 @RequestMapping(Constantes.BASE_WEB_URL + "supermercados")
 public class SupermercadoWebController {
 	
 	@Autowired
-	private SupermercadosService service;
+	private SupermercadoService service;
 	
 	@GetMapping("/editar/{id}")
 	public ModelAndView editar(@PathVariable Long id) {
@@ -54,9 +54,11 @@ public class SupermercadoWebController {
 		if (bindingResult.hasErrors()) {
 			return novo(supermercado);
 		}
-		getService().salvar(supermercado);
-		attributes.addFlashAttribute("messageSuccess", "Supermercado salvo com sucesso!");	
-		return new ModelAndView("redirect:/supermercados/listar");
+		if(getService().salvar(supermercado)) {
+			attributes.addFlashAttribute("messageSuccess", "Supermercado salvo com sucesso!");	
+			return new ModelAndView("redirect:/supermercados/listar");
+		}
+		return novo(supermercado);
 	}
 	
 	@PutMapping("/editar")
@@ -64,19 +66,22 @@ public class SupermercadoWebController {
 		if (bindingResult.hasErrors()) {
 			return editar(supermercado.getIdSupermercado());
 		}
-		getService().editar(supermercado);
-		attributes.addFlashAttribute("messageSuccess", "Supermercado editado com sucesso!");	
-		return new ModelAndView("redirect:/supermercados/listar");
+		if(getService().editar(supermercado)) {
+			attributes.addFlashAttribute("messageSuccess", "Supermercado editado com sucesso!");	
+			return new ModelAndView("redirect:/supermercados/listar");
+		}
+		return editar(supermercado.getIdSupermercado());
 	}
 	
 	@DeleteMapping("/remover/{id}")
 	public String remover(@PathVariable Long id, RedirectAttributes attributes) {
-		getService().remover(id);
-		attributes.addFlashAttribute("messageSuccess", "Supermercado removido com sucesso!");
+		if(getService().remover(id)) {
+			attributes.addFlashAttribute("messageSuccess", "Supermercado removido com sucesso!");
+		}
 		return "redirect:/supermercados/listar";
 	}
 	
-	public SupermercadosService getService() {
+	public SupermercadoService getService() {
 		return service;
 	}
 }

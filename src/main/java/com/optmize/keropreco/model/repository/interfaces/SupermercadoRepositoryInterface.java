@@ -7,17 +7,17 @@ import org.springframework.stereotype.Component;
 import com.optmize.keropreco.model.entity.Supermercado;
 
 @Component
-public interface SupermercadosRepositoryInterface {
+public interface SupermercadoRepositoryInterface {
 	
-	public Supermercado salvar(Supermercado supermercado);
+	public Boolean salvar(Supermercado supermercado);
 	
 	public Supermercado buscarPorId(Long id);
 	
 	public List<Supermercado> listarTodos();
 	
-	public void remover(Long id);
+	public Boolean remover(Long id);
 	
-	public Supermercado editar(Supermercado supermercado);
+	public Boolean editar(Supermercado supermercado);
 
 	public Boolean existe(Long id);
 }

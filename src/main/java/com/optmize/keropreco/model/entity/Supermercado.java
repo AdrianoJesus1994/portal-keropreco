@@ -1,31 +1,16 @@
 package com.optmize.keropreco.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.validator.constraints.NotBlank;
 
-@Entity
-@Table(name="TB_SUPERMERCADO")
 public class Supermercado {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID_SUPERMERCADO")
 	private Long idSupermercado;
 	
 	@NotBlank
-	@Column(name="NOME", nullable=false)
 	private String nome;
 	
-	@Column(name="LOCALIZACAO", nullable=false, length=50)
 	private String localizacao;
 	
-	@Column(name="ENDERECO", nullable=false, length=255)
 	private String endereco;
 	
 	public Supermercado() {

@@ -8,14 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.optmize.keropreco.common.constants.Constantes;
 import com.optmize.keropreco.model.entity.Vinho;
-import com.optmize.keropreco.model.repository.interfaces.VinhosRepositoryInterface;
+import com.optmize.keropreco.model.repository.interfaces.VinhoRepositoryInterface;
 
 @Service
-public class VinhosService {
+public class VinhoService {
 	
 	@Autowired
-	@Qualifier(Constantes.AMBIENTE_REPOSTORY_ATUAL)
-	private VinhosRepositoryInterface repository;
+	private VinhoRepositoryInterface repository;
 
 	public Vinho salvar(Vinho vinho) {
 		return getRepository().salvar(vinho);
@@ -46,7 +45,7 @@ public class VinhosService {
 		return getRepository().existe(id);
 	}
 	
-	private VinhosRepositoryInterface getRepository() {
+	private VinhoRepositoryInterface getRepository() {
 		return repository;
 	}
 	

@@ -11,6 +11,7 @@ public class PortalKeroprecoApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		
 	}
 
 }

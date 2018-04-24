@@ -2,29 +2,19 @@ package com.optmize.keropreco.model.entity;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.NumberFormat;
 
-@Entity
 public class Vinho {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
 	@NotBlank
 	private String nome;
 	
 	@NotNull
-	@Enumerated(EnumType.STRING)
 	private TipoVinho tipo;
 	
 	@NotNull

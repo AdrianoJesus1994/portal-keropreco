@@ -18,14 +18,14 @@ import com.optmize.keropreco.common.constants.Constantes;
 import com.optmize.keropreco.controller.BaseController;
 import com.optmize.keropreco.model.entity.TipoVinho;
 import com.optmize.keropreco.model.entity.Vinho;
-import com.optmize.keropreco.model.service.VinhosService;
+import com.optmize.keropreco.model.service.VinhoService;
 
 @Controller
 @RequestMapping(Constantes.BASE_WEB_URL + "vinhos")
 public class VinhosWebController extends BaseController {
 	
 	@Autowired
-	private VinhosService service;
+	private VinhoService service;
 	
 	@GetMapping("/editar/{id}")
 	public ModelAndView editar(@PathVariable Long id) {
@@ -77,11 +77,11 @@ public class VinhosWebController extends BaseController {
 		return "redirect:/vinhos/listar";
 	}
 	
-	public VinhosService getService() {
+	public VinhoService getService() {
 		return service;
 	}
 	
-	public void setService(VinhosService service) {
+	public void setService(VinhoService service) {
 		this.service = service;
 	}
 }

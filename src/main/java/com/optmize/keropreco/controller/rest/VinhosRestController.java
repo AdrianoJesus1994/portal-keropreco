@@ -16,15 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.optmize.keropreco.common.constants.Constantes;
 import com.optmize.keropreco.controller.BaseController;
+import com.optmize.keropreco.model.entity.Usuario;
 import com.optmize.keropreco.model.entity.Vinho;
-import com.optmize.keropreco.model.service.VinhosService;
+import com.optmize.keropreco.model.repository.impl.UsuarioJDBCRepositoryImpl;
+import com.optmize.keropreco.model.service.VinhoService;
 
 @RestController
 @RequestMapping(Constantes.BASE_API_URL + "vinhos")
 public class VinhosRestController extends BaseController {
 	
 	@Autowired
-	private VinhosService service;
+	private VinhoService service;
+	
+	@Autowired
+	private UsuarioJDBCRepositoryImpl repo;
 	
 
 	@GetMapping
@@ -51,8 +56,9 @@ public class VinhosRestController extends BaseController {
 		getService().remover(id);
 	}
 	
-	public VinhosService getService() {
+	public VinhoService getService() {
 		return service;
 	}
 	
+
 }
