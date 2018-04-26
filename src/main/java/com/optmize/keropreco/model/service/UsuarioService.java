@@ -12,7 +12,7 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepositoryInterface repository;
 	
-	public Boolean existe(Usuario usuario) {
+	public Usuario existe(Usuario usuario) {
 		return getRepository().existe(usuario);
 	}
 	

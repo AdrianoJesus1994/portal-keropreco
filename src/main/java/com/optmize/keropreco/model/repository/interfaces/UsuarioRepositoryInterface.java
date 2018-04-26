@@ -7,7 +7,7 @@ import com.optmize.keropreco.model.entity.Usuario;
 @Component
 public interface UsuarioRepositoryInterface {
 
-	boolean existe(Usuario usuario);
+	Usuario existe(Usuario usuario);
 	/*
 	public boolean inserir(Usuario novoUsuario);
 	

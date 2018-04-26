@@ -37,9 +37,11 @@ public class LoginWebController extends BaseController {
 		if (bindingResult.hasErrors()) {
 			return login(usuario);
 		}
-		if(getService().existe(usuario)) {
+		if(getService().existe(usuario) != null) {
 			return new ModelAndView("redirect:home");
 		}
+		
+		//TODO: Adicionar dados na sessão do usuário
 		
 		return login(usuario);
 	}

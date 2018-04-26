@@ -25,13 +25,14 @@ public class UsuarioJDBCRepositoryImpl extends BaseRepository implements Usuario
 
 
 	@Override
-	public boolean existe(Usuario usuario) {
+	public Usuario existe(Usuario usuario) {
 
-		boolean existe = false;
 		String sql = "SELECT "
 								.concat(COLUNA_NOME)
 								.concat(",")
 								.concat(COLUNA_LOGIN)
+								.concat(",")
+								.concat(COLUNA_DATA_NASCIMENTO)
 								.concat(",")
 								.concat(COLUNA_ID_PERFIL)
 								.concat(" FROM ")
@@ -72,9 +73,8 @@ public class UsuarioJDBCRepositoryImpl extends BaseRepository implements Usuario
 		// como verdadeira e retornamos
 		if (retorno != null) {
 			//AplicacaoUtil.getInstancia().setUsuarioLogado(retorno);
-			existe = true;
 		}
-		return existe;
+		return retorno;
 	}
 
 }

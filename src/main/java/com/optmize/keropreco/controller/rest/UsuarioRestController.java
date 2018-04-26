@@ -21,11 +21,14 @@ public class UsuarioRestController extends BaseController {
 	private UsuarioService service;
 	
 	@PostMapping("/existe")
-	public ResponseEntity<Boolean> salvar(@RequestBody Usuario usuario) {
-		if(getService().existe(usuario)) {
-			return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+	public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario) {
+		
+		Usuario usuarioAutenticado = getService().existe(usuario);
+		
+		if(usuarioAutenticado != null) {
+			return new ResponseEntity<Usuario>(usuarioAutenticado, HttpStatus.OK);
 		}
-		return new ResponseEntity<Boolean>(Boolean.FALSE, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Usuario>(usuarioAutenticado, HttpStatus.NOT_FOUND);
 	}
 	
 	public UsuarioService getService() {
